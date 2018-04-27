@@ -1,0 +1,22 @@
+{
+    "color":{
+        "kBarColor":"#FEDF3E",
+        "kSegSelectedColor":"#fb911a",
+        "kDarkYellowColor":"#333333",
+        "kBgColor":"#f4f4f4"
+    },
+    "config":{
+        "XGTCSJJPushKey":"83fb57ed6dbf87d49a3a1489",
+        "AMapApiKey":"7d3991fd788fc40adf1169b5d6d5f7b1",
+        "XGTCSJUMChannelId":"siji",
+        "WeChatAppKey":"wx6422df695c8065ee",
+        "WeChatAppSecretString":"471dd760b50b7cf934400728aa09b832",
+        "QQAppkey":"1106408144",
+        "QQAppSecretString":"qAc8Az4Ysf8gc55a8gc55a",
+        "WeiBoAppkey":"weibokey",
+        "WeiboAppSecretString":"WeiboAppSecretString",
+        "XGTCSJUMengAPPKey":"59969d474544cb61c0001c7e",
+        "BaiduMobStatKey":"e0aea438d6",
+    },
+    "XGTCDebugModel":1,
+}

@@ -1,0 +1,1 @@
+../../../XGJSBridgeLibrary/XGJSBridgeLibrary/Classes/XGJSBridge.h
