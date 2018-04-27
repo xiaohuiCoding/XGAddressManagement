@@ -53,94 +53,94 @@
   [self setDefaultImg:ImageNamed(@"no_address") defaultTitle:@"没有搜索到您当前的地址" defaultBtnTitle:nil];
 }
 
-//- (void)bindViewModel {
-//  //先执行一次
-//  [self updateLocationAction];
-//  
-//  WEAKSELF(weakSelf);
-//  [[self.viewModel.refreshCommand executionSignals] subscribeNext:^(id  _Nullable x) {
-//    STRONGSELF(strongSelf);
-//    [strongSelf showMJFoor];
-//    [strongSelf.tableView.mj_header endRefreshing];
+- (void)bindViewModel {
+  //先执行一次
+  [self updateLocationAction];
+  
+  WEAKSELF(weakSelf);
+  [[self.viewModel.refreshCommand executionSignals] subscribeNext:^(id  _Nullable x) {
+    STRONGSELF(strongSelf);
+    [strongSelf showMJFoor];
+    [strongSelf.tableView.mj_header endRefreshing];
+    [strongSelf.tableView reloadData];
+    [strongSelf showNodataInView:strongSelf.tableView isShow:strongSelf.viewModel.isSearching?strongSelf.viewModel.searchingDataArr.count==0: strongSelf.viewModel.dataSource.count==0];
+    [strongSelf hiddenLoading];
+  }];
+
+  [[[RACObserve(self.searchTopView.searchTempBtn, hidden) distinctUntilChanged] deliverOnMainThread] subscribeNext:^(NSNumber *x) {
+    STRONGSELF(strongSelf);
+    strongSelf.viewModel.isSearching = x.boolValue;
+    strongSelf.mapView.hidden = x.boolValue;
 //    [strongSelf.tableView reloadData];
-//    [strongSelf showNodataInView:strongSelf.tableView isShow:strongSelf.viewModel.isSearching?strongSelf.viewModel.searchingDataArr.count==0: strongSelf.viewModel.dataSource.count==0];
 //    [strongSelf hiddenLoading];
-//  }];
-//  
-//  [[[RACObserve(self.searchTopView.searchTempBtn, hidden) distinctUntilChanged] deliverOnMainThread] subscribeNext:^(NSNumber *x) {
-//    STRONGSELF(strongSelf);
-//    strongSelf.viewModel.isSearching = x.boolValue;
-//    strongSelf.mapView.hidden = x.boolValue;
-//    [strongSelf.tableView reloadData];
-//    [strongSelf hiddenLoading];
-//    
-//    //若检测用户在非义乌地区或无法成功获取用户位置， 弹出toast提示。
-//    if(!strongSelf.viewModel.isInStoreRangeCity&&strongSelf.viewModel.isSearching){
-//      //城市点击事件  义乌
-//      [strongSelf toastMessageTitle:TXSJLocationOnlyYiWu];
-//    }
-//    
+
+    //若检测用户在非义乌地区或无法成功获取用户位置， 弹出toast提示。
+    if(!strongSelf.viewModel.isInStoreRangeCity&&strongSelf.viewModel.isSearching){
+      //城市点击事件  义乌
+      [strongSelf toastMessageTitle:TXSJLocationOnlyYiWu];
+    }
+
 //    [strongSelf showMJFoor];
-//    
+
 //    [UIView animateWithDuration:0.2 animations:^{
 //      strongSelf.mapView.size = CGSizeMake(kScreenWidth, x.boolValue?0:TXSJSelectedMapHeight);
 //      strongSelf.tableView.frame = CGRectMake(0, x.boolValue?64:strongSelf.mapView.max_Y, kScreenWidth ,(kScreenHeight - strongSelf.mapView.max_Y));
 //    } completion:^(BOOL finished) {
 //      [strongSelf showNodataInView:strongSelf.tableView isShow:strongSelf.viewModel.isSearching?strongSelf.viewModel.searchingDataArr.count==0: strongSelf.viewModel.dataSource.count==0];
 //    }];
-//  }];
-//  
-//  //搜索框 左边返回箭头点击事件
-//  [[self rac_signalForSelector:@selector(commonSearchLeftButtonClicked:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate) ] subscribeNext:^(RACTuple * _Nullable x) {
-//    STRONGSELF(strongSelf);
-//    BOOL leftButtonClicked = [x.first boolValue];
-//    if(leftButtonClicked){
-//      [strongSelf backAction:nil];
-//    }else{  //城市点击事件  义乌
-//      [strongSelf toastMessageTitle:TXSJLocationOnlyYiWu];
-//    }
-//  }];
-//  
-//  //搜索框 右边  新增地址点击事件
-//  [[self rac_signalForSelector:@selector(rightActionBtnClicked:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate)] subscribeNext:^(RACTuple * _Nullable x) {
-//    STRONGSELF(strongSelf);
-//    if([x.first boolValue]) {
-//      strongSelf.searchTopView.searchTempBtn.hidden = NO;
-//      strongSelf.searchTopView.searchTF.text = @"";
-//      strongSelf.viewModel.keyword = @"";
-//      [strongSelf.viewModel.searchingDataArr removeAllObjects];
-//      if(!strongSelf.viewModel.isSearching){ //清空搜索数据
-//        strongSelf.viewModel.searchPage = 1;
-//      }
+  }];
+
+  //搜索框 左边返回箭头点击事件
+  [[self rac_signalForSelector:@selector(commonSearchLeftButtonClicked:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate) ] subscribeNext:^(RACTuple * _Nullable x) {
+    STRONGSELF(strongSelf);
+    BOOL leftButtonClicked = [x.first boolValue];
+    if(leftButtonClicked){
+      [strongSelf backAction:nil];
+    }else{  //城市点击事件  义乌
+      [strongSelf toastMessageTitle:TXSJLocationOnlyYiWu];
+    }
+  }];
+
+  //搜索框 右边  新增地址点击事件
+  [[self rac_signalForSelector:@selector(rightActionBtnClicked:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate)] subscribeNext:^(RACTuple * _Nullable x) {
+    STRONGSELF(strongSelf);
+    if([x.first boolValue]) {
+      strongSelf.searchTopView.searchTempBtn.hidden = NO;
+      strongSelf.searchTopView.searchTF.text = @"";
+      strongSelf.viewModel.keyword = @"";
+      [strongSelf.viewModel.searchingDataArr removeAllObjects];
+      if(!strongSelf.viewModel.isSearching){ //清空搜索数据
+        strongSelf.viewModel.searchPage = 1;
+      }
 //      [strongSelf.tableView reloadData];
-//    }else {
-////      BOOL isLogin = [TXSJCacheManager loginUserToken].length > 0;
-////      if(!isLogin){
-////        [TXSJLoginVC login:strongSelf.navigationController success:^{
-////          STRONGSELF(strongSelf);
-////          [strongSelf prepareAddNewAddres];
-////        }];
-////        return ;
-////      }
-////
-////      [strongSelf prepareAddNewAddres];
-//    }
-//  }];
-//  
-//  //搜索框 输入内容回调  进行搜索
-//  [[self rac_signalForSelector:@selector(searchTextFieldInputAction:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate) ] subscribeNext:^(RACTuple * _Nullable x) {
-//    STRONGSELF(strongSelf);
-//    strongSelf.viewModel.keyword = (NSString *)x.first;
-//    strongSelf.viewModel.isSearching = YES;
-//    [strongSelf searchActionForFirstPage];
-//  }];
-//  
-//  
-//  [self.viewModel.errors subscribeNext:^(id  _Nullable x) {
-//    STRONGSELF(strongSelf);
-//    [strongSelf hiddenLoading];
-//  }];
-//}
+    }else {
+//      BOOL isLogin = [TXSJCacheManager loginUserToken].length > 0;
+//      if(!isLogin){
+//        [TXSJLoginVC login:strongSelf.navigationController success:^{
+//          STRONGSELF(strongSelf);
+//          [strongSelf prepareAddNewAddres];
+//        }];
+//        return ;
+//      }
+//
+//      [strongSelf prepareAddNewAddres];
+    }
+  }];
+
+  //搜索框 输入内容回调  进行搜索
+  [[self rac_signalForSelector:@selector(searchTextFieldInputAction:) fromProtocol:@protocol(TXSJCommonSearchViewDelegate) ] subscribeNext:^(RACTuple * _Nullable x) {
+    STRONGSELF(strongSelf);
+    strongSelf.viewModel.keyword = (NSString *)x.first;
+    strongSelf.viewModel.isSearching = YES;
+    [strongSelf searchActionForFirstPage];
+  }];
+
+
+  [self.viewModel.errors subscribeNext:^(id  _Nullable x) {
+    STRONGSELF(strongSelf);
+    [strongSelf hiddenLoading];
+  }];
+}
 
 
 -(void)showMJFoor{
@@ -228,7 +228,7 @@
     strongSelf.mapView.zoomLevel--;
   }];
   
-//  [self.view addSubview:self.tableView];
+  [self.view addSubview:self.tableView];
   
   
   [self mapDrawAction];
@@ -450,11 +450,11 @@
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     WEAKSELF(weakSelf);
-    _tableView.mj_header = [TXSJRefreshGifHeader headerWithRefreshingBlock:^{
-      STRONGSELF(strongSelf);
-      //搜索状态
-      [strongSelf searchActionForFirstPage];
-    }];
+//    _tableView.mj_header = [TXSJRefreshGifHeader headerWithRefreshingBlock:^{
+//      STRONGSELF(strongSelf);
+//      //搜索状态
+//      [strongSelf searchActionForFirstPage];
+//    }];
   }
   return _tableView;
 }
