@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TXSJMapSelectLocationVC.h"
+#import "XGMapSelectLocationVC.h"
 
 @interface ViewController ()
 
@@ -26,7 +27,8 @@
 }
 
 - (void)showAddress {
-    TXSJMapSelectLocationVC *vc = [[TXSJMapSelectLocationVC alloc] init];
+//    TXSJMapSelectLocationVC *vc = [[TXSJMapSelectLocationVC alloc] init];
+    XGMapSelectLocationVC *vc = [[XGMapSelectLocationVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

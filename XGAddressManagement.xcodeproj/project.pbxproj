@@ -42,6 +42,7 @@
 		4B2C3A252093143200DF51EE /* TXSJRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C3A092093143200DF51EE /* TXSJRefreshFooter.m */; };
 		4B2C3A262093143200DF51EE /* TXSJRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C3A0B2093143200DF51EE /* TXSJRefreshGifHeader.m */; };
 		4B2C3A272093143200DF51EE /* UIView+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C3A0D2093143200DF51EE /* UIView+HUD.m */; };
+		4BDCD6BC20933C24009811FD /* XGMapSelectLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDCD6BB20933C24009811FD /* XGMapSelectLocationVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,8 @@
 		4B2C3A0B2093143200DF51EE /* TXSJRefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXSJRefreshGifHeader.m; sourceTree = "<group>"; };
 		4B2C3A0C2093143200DF51EE /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
 		4B2C3A0D2093143200DF51EE /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
+		4BDCD6BA20933C24009811FD /* XGMapSelectLocationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGMapSelectLocationVC.h; sourceTree = "<group>"; };
+		4BDCD6BB20933C24009811FD /* XGMapSelectLocationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGMapSelectLocationVC.m; sourceTree = "<group>"; };
 		65D581192379D55BDC07F9B7 /* Pods-XGAddressManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XGAddressManagement.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XGAddressManagement/Pods-XGAddressManagement.debug.xcconfig"; sourceTree = "<group>"; };
 		C80EF1BA8D175A1FD5FE2552 /* libPods-XGAddressManagement.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XGAddressManagement.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF93A664D6685E68E2EE43B0 /* Pods-XGAddressManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XGAddressManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-XGAddressManagement/Pods-XGAddressManagement.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				4B2C39A22093137700DF51EE /* AppDelegate.m */,
 				4B2C39A42093137700DF51EE /* ViewController.h */,
 				4B2C39A52093137700DF51EE /* ViewController.m */,
+				4BDCD6BA20933C24009811FD /* XGMapSelectLocationVC.h */,
+				4BDCD6BB20933C24009811FD /* XGMapSelectLocationVC.m */,
 				4B2C39A72093137700DF51EE /* Main.storyboard */,
 				4B2C39AA2093137700DF51EE /* Assets.xcassets */,
 				4B2C39AC2093137700DF51EE /* LaunchScreen.storyboard */,
@@ -515,6 +520,7 @@
 				4B2C3A102093143200DF51EE /* TXSJAddressEngine.m in Sources */,
 				4B2C3A1E2093143200DF51EE /* TXSJViewModel.m in Sources */,
 				4B2C3A262093143200DF51EE /* TXSJRefreshGifHeader.m in Sources */,
+				4BDCD6BC20933C24009811FD /* XGMapSelectLocationVC.m in Sources */,
 				4B2C3A132093143200DF51EE /* TXSJLocalPathUtils.m in Sources */,
 				4B2C3A1D2093143200DF51EE /* TXSJTableViewModel.m in Sources */,
 				4B2C39A62093137700DF51EE /* ViewController.m in Sources */,
@@ -697,10 +703,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RHYXLE7GFE;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XGAddressManagement/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = XGAddressManagement/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XH.XGAddressManagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tuchao.sjyx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -712,10 +720,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RHYXLE7GFE;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XGAddressManagement/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = XGAddressManagement/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XH.XGAddressManagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tuchao.sjyx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

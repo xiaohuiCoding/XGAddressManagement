@@ -17,14 +17,13 @@
 #import "TXSJStoresModel.h"
 //#import "TXSJLoginVC.h"
 
-
 #define TXSJSelectedMapHeight (ceilf(kScreenWidth*200.f/375.f))
 
 @interface TXSJMapSelectLocationVC ()<MAMapViewDelegate,UITableViewDelegate,UITableViewDataSource,TXSJCommonSearchViewDelegate>
 @property (nonatomic, strong) TXSJMapLocationVM *viewModel;
-@property (nonatomic,strong) TXSJCommonSearchView *searchTopView;
+@property (nonatomic, strong) TXSJCommonSearchView *searchTopView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic,strong) MAMapView *mapView;
+@property (nonatomic, strong) MAMapView *mapView;
 
 @end
 
